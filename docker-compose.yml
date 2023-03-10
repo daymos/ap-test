@@ -7,7 +7,7 @@ services:
       context: ./currywurst_service
       dockerfile: ApiDockerfile
     ports:
-      - "80:80"
+      - "3003:3003"
     networks:
         - rabbitmq_net
   rabbitmq:
