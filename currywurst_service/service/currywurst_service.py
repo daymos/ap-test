@@ -10,12 +10,10 @@ def is_price_met(eur_inserted, currywurst_price):
 def return_coins(eur_inserted: int, currywurst_price: float) -> currywurstPurchaseResponse:
    change = {}
    partial = (eur_inserted - currywurst_price) * 100
-   print('partial: ', partial)
    coins = [200, 100, 50, 20, 10, 5, 2, 1]
 
    for coin in coins:
       coin_count = partial // coin
-      print('coin count: ', coin_count)
       change[coin] = coin_count 
       partial = partial % coin
 

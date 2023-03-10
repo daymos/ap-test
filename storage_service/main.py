@@ -3,9 +3,12 @@ import logging
 
 import aio_pika
 
+from service.logs_service import store_logs
+
+
 
 async def main() -> None:
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     connection = await aio_pika.connect_robust(
         "amqp://rabbit:password@rabbitmq/",
     )
@@ -22,7 +25,9 @@ async def main() -> None:
         async with queue.iterator() as queue_iter:
             async for message in queue_iter:
                 async with message.process():
-                    print(message.body)
+                    logging.info('Received this correlation_id: {}, with message: {}'.format(message.correlation_id,message.body))
+
+                    store_logs(message)
 
                     if queue.name in message.body.decode():
                         break

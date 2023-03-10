@@ -1,0 +1,7 @@
+correlation_id,change,timestamp
+1d98787b-d2a9-4e8b-97ef-01208f58e41b,2023-03-10T13:39:10.479039,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}
+6660586e-997c-40a8-8855-47124e52985e,2023-03-10T13:39:23.773100,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}
+c8ad219d-65e3-412b-8fa0-93e18513beeb,2023-03-10T13:41:56.582921,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}
+5ff8fd6d-94f3-42ec-8f33-b3d74505251f,2023-03-10T13:42:04.388373,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}
+44e5174a-6305-46e2-9631-79af06cd966c,2023-03-10T13:42:37.501065,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}
+e624607e-25d9-4b4d-a881-b1fb8f8934d4,2023-03-10T13:43:47.425650,{"two_euro_coins": 4.0, "one_euro_coins": 0.0, "fifty_cent_coins": 1.0, "twenty_cent_coin": 0.0, "ten_cent_coins": 1.0, "five_cent_coins": 0.0, "two_cent_coins": 0.0, "one_cent_coins": 0.0}

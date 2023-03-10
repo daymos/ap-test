@@ -26,7 +26,7 @@ services:
       context: ./storage_service
       dockerfile: StorageDockerfile
     volumes:
-      - ./storage_service/db:/storage_service/db
+      - ./storage_service/db:/code/storage_service/db
 
     environment:
       - RABBITMQ_USERNAME=rabbit
