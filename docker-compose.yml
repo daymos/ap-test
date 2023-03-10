@@ -1,38 +1,41 @@
 version: "3.9"
 
 services:
-  api:
+  currywurst_service:
+    restart: always
     build:
-      context: ./api
+      context: ./currywurst_service
       dockerfile: ApiDockerfile
     ports:
       - "80:80"
     networks:
         - rabbitmq_net
-  #rabbitmq:
-  #  image: rabbitmq:3-management-alpine
-  #  ports:
-  #    - "5672:5672"
-  #    - "15672:15672"
-  #  environment:
-  #    - RABBITMQ_DEFAULT_USER=rabbit
-  #    - RABBITMQ_DEFAULT_PASS=password
-  #  networks:
-  #      - rabbitmq_net
-  #storage:
-  #  restart: always
-  #  build: 
-  #    context: ./storage
-  #    dockerfile: StorageDockerfile
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=password
+    networks:
+        - rabbitmq_net
+  storage_service:
+    restart: always
+    build: 
+      context: ./storage_service
+      dockerfile: StorageDockerfile
+    volumes:
+      - ./storage_service/db:/storage_service/db
 
-  #  environment:
-  #    - RABBITMQ_USERNAME=rabbit
-  #    - RABBITMQ_PASSSWORD=password
-  #    - RABBITMQ_HOST=rabbitmq
-  #    - RABBITMQ_QUEUE=dataqueue
-  #    - RABBITMQ_EXCHANGE=exchange_test
-  #  networks:
-  #      - rabbitmq_net
+    environment:
+      - RABBITMQ_USERNAME=rabbit
+      - RABBITMQ_PASSSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_QUEUE=dataqueue
+      - RABBITMQ_EXCHANGE=exchange_test
+    networks:
+        - rabbitmq_net
 networks:
   rabbitmq_net:
     driver: bridge

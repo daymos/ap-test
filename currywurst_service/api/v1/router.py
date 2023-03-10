@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.api.v1 import currywurst
+from currywurst_service.api.v1 import currywurst
 
 router = APIRouter(prefix="/v1")
 
