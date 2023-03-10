@@ -10,7 +10,7 @@ async def create_connection():
     )
     return connection
 
-async def publish_event(connection, msg, request_id, routing_key):
+async def publish_event(connection, event, routing_key):
     if connection.is_closed:
         connection = await create_connection()
 
@@ -19,8 +19,7 @@ async def publish_event(connection, msg, request_id, routing_key):
         try:
             await channel.default_exchange.publish(                     
                 aio_pika.Message(
-                    body=json.dumps(msg).encode(),
-                    correlation_id = request_id
+                    body=json.dumps(event).encode(),
                     ),        
                 routing_key=routing_key,                                
             )
