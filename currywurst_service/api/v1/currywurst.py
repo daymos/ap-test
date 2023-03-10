@@ -1,7 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,  HTTPException
 
 from currywurst_service.schemas.currywurst import currywurstPurchaseRequest, currywurstPurchaseResponse
-from currywurst_service.service.currywurst_service import return_coins
+from currywurst_service.service.currywurst_service import return_coins, is_price_met
 
 
 router = APIRouter()
@@ -14,8 +14,12 @@ def introduce_yourself():
 
 @router.post("/currywurst/pay")
 async def currywurst_pay(request: currywurstPurchaseRequest):
-    print(request)
-    change = return_coins(request.currywurst_price, request.eur_inserted)
+    shoud_proceed = is_price_met(request.eur_inserted, request.currywurst_price)
+
+    if not shoud_proceed:
+        raise HTTPException(status_code = 400, detail =  "Need more money.")
+
+    change = return_coins(request.eur_inserted, request.currywurst_price) 
 
     # await publish method
     

@@ -13,13 +13,10 @@ async def main() -> None:
     queue_name = "dataqueue"
 
     async with connection:
-        # Creating channel
         channel = await connection.channel()
 
-        # Will take no more than 10 messages in advance
         await channel.set_qos(prefetch_count=10)
 
-        # Declaring queue
         queue = await channel.declare_queue(queue_name, auto_delete=True)
 
         async with queue.iterator() as queue_iter:
