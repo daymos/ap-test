@@ -12,4 +12,8 @@ app.add_middleware(RequestContextMiddleware)
 
 @app.on_event("startup")             
 async def app_startup():
-    app.state.mb = await create_connection()
+    app.state.rabbitmq_connection = await create_connection()
+
+@app.on_event("shutdown")             
+async def app_shutdown():
+    await app.state.rabbitmq_connection.close()

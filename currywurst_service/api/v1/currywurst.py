@@ -26,10 +26,8 @@ async def currywurst_pay(currywurstPurchaseRequest: currywurstPurchaseRequest, r
 
     change = return_coins(currywurstPurchaseRequest.eur_inserted, currywurstPurchaseRequest.currywurst_price) 
 
-    request_id = get_request_id()
-
     event = {
-        "correlation_id": request_id,
+        "correlation_id": get_request_id(),
         "timestamp": datetime.now().isoformat(),
         "transaction": {
             "currywurst_price": currywurstPurchaseRequest.currywurst_price,
@@ -38,7 +36,6 @@ async def currywurst_pay(currywurstPurchaseRequest: currywurstPurchaseRequest, r
         }
     }
 
-    # await publish method
-    await publish_event(request.app.state.mb, event, 'dataqueue')
+    await publish_event(request.app.state.rabbitmq_connection, event)
     
     return change

@@ -8,8 +8,16 @@ services:
       dockerfile: ApiDockerfile
     ports:
       - "3003:3003"
+    environment:
+      - RABBITMQ_USERNAME=rabbit
+      - RABBITMQ_PASSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_QUEUE=dataqueue
+      - RABBITMQ_EXCHANGE=exchange_test
+      - DB_PATH=/code/storage_service/db/logs.txt
     networks:
         - rabbitmq_net
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
@@ -20,6 +28,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=password
     networks:
         - rabbitmq_net
+
   storage_service:
     restart: always
     build: 
@@ -27,13 +36,13 @@ services:
       dockerfile: StorageDockerfile
     volumes:
       - ./storage_service/db:/code/storage_service/db
-
     environment:
       - RABBITMQ_USERNAME=rabbit
-      - RABBITMQ_PASSSWORD=password
+      - RABBITMQ_PASSWORD=password
       - RABBITMQ_HOST=rabbitmq
       - RABBITMQ_QUEUE=dataqueue
       - RABBITMQ_EXCHANGE=exchange_test
+      - DB_PATH=/code/storage_service/db/logs.txt
     networks:
         - rabbitmq_net
 networks:

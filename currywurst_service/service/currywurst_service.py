@@ -18,14 +18,14 @@ def return_coins(eur_inserted: int, currywurst_price: float) -> currywurstPurcha
       partial = partial % coin
 
    key_map = {
-       200: 'two_euro_coins',
-       100: 'one_euro_coins',
-       50: 'fifty_cent_coins',
-       20: 'twenty_cent_coin',
-       10: 'ten_cent_coins',
-       5: 'five_cent_coins',
-       2: 'two_cent_coins',
-       1: 'one_cent_coins' 
+       200: 'two_euro',
+       100: 'one_euro',
+       50: 'fifty_cent',
+       20: 'twenty_cent',
+       10: 'ten_cent',
+       5: 'five_cent',
+       2: 'two_cent',
+       1: 'one_cent' 
     }
 
    remapped_change: currywurstPurchaseResponse = { key_map[k]:change[k] for k in change }

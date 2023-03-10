@@ -9,11 +9,11 @@ class currywurstPurchaseRequest(BaseModel):
 
 
 class currywurstPurchaseResponse(BaseModel):
-    two_euro_coins: int
-    one_euro_coins: int
-    fifty_cent_coins: int
-    twenty_cent_coins: int
-    ten_cent_coins: int
-    five_cent_coins: int
-    two_cent_coins: int
-    one_cent_coins: int
+    two_euro: int
+    one_euro: int
+    fifty_cent: int
+    twenty_cent: int
+    ten_cent: int
+    five_cent: int
+    two_cent: int
+    one_cent: int
